@@ -1,12 +1,7 @@
 #include <iostream>
 #include <cmath>
-
 #include "cartesian.h"
 #include "polar.h"
-
-Polar toPolar(Cartesian& obj);
-
-Cartesian toCartesian(Polar& pol);
 
 int main()
 {
@@ -20,22 +15,11 @@ int main()
 	sum.printCoords();
 	std::cout << std::endl;
 	
-	// represent them in polar coordinates
-	Polar p1;
-	p1 = toPolar(sum);
-	p1.printCoords();
+	// create a polar version
 	
+	Polar p1(sum);	
+	p1.printCoords();
+		
 }
 
-Polar toPolar(Cartesian& obj)
-{
-        Polar pol(atan((obj.getY() / obj.getX())), obj.module());
-        return pol;
-}
-
-Cartesian toCartesian(Polar& pol)
-{
-        Cartesian cart(pol.getDist() * cos(pol.getAngle()), pol.getDist() * sin(pol.getAngle()));
-        return cart;
-}
 
